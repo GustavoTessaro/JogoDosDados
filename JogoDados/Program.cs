@@ -1,11 +1,30 @@
 ﻿// See https://aka.ms/new-console-template for more information
 class Program
 {
+
+    public static char JogarDeNovo()
+    {
+
+        Console.WriteLine("\nDeseja jogar novamente? (s/n)");
+        char pergunta = Console.ReadKey().KeyChar;
+
+        if (pergunta != 's' && pergunta != 'S')
+        {
+            Console.WriteLine("\n\nObrigado por Jogar!");
+            return pergunta;
+        }
+        else
+        {
+            return pergunta;
+        }
+
+    }
     static void Main(string[] args)
     {
 
         int posicaoJogador = 0, posicaoComputador = 0, dadoJogado = 0;
         bool vezComputador = true;
+        bool jogarDenovo = true;
         Random random = new Random();
 
         Console.WriteLine("Bem-vindo ao jogo de corrida de dados! O objetivo é chegar à posição 30 primeiro.");
@@ -37,7 +56,19 @@ class Program
             if (posicaoJogador >= 30)
             {
                 Console.WriteLine("\nParabéns, você venceu a corrida!");
-                break;
+                char jogarNovamente = JogarDeNovo();
+
+                if (jogarNovamente != 's' && jogarNovamente != 'S')
+                {
+                    break;
+                }
+                else
+                {
+                    Console.Clear();
+                    posicaoJogador = 0;
+                    posicaoComputador = 0;
+                    continue;
+                }
             }
 
             if (dadoJogado == 6)
@@ -72,6 +103,7 @@ class Program
                 if (posicaoComputador >= 30)
                 {
                     Console.WriteLine("\nO computador venceu a corrida! Tente novamente.");
+                    jogarDenovo = false;
                     break;
                 }
 
@@ -82,6 +114,25 @@ class Program
                 }
 
                 vezComputador = false;
+
+            }
+
+            if (jogarDenovo == false)
+            {
+                char jogarNovamente = JogarDeNovo();
+
+                if (jogarNovamente != 's' && jogarNovamente != 'S')
+                {
+                    break;
+                }
+                else
+                {
+                    Console.Clear();
+                    posicaoJogador = 0;
+                    posicaoComputador = 0;
+                    jogarDenovo = true;
+                    continue;
+                }
 
             }
 
