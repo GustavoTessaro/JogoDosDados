@@ -31,6 +31,8 @@ class Program
 
         while (posicaoJogador < 30 && posicaoComputador < 30)
         {
+            #region Rodada do Jogador
+
             Console.WriteLine("\nPosição Jogador: " + posicaoJogador);
             Console.WriteLine("Posição Computador: " + posicaoComputador);
             Console.Write("\nAperte qualquer tecla para você jogar!");
@@ -77,6 +79,10 @@ class Program
                 continue;
             }
 
+            #endregion
+
+            #region  Rodada do Computador
+
             while (vezComputador == true)
             {
                 Console.WriteLine("\nPosição Jogador: " + posicaoJogador);
@@ -116,6 +122,8 @@ class Program
                 vezComputador = false;
 
             }
+
+            #endregion
 
             if (jogarDenovo == false)
             {
